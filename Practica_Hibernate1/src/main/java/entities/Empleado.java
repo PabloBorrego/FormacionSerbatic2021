@@ -1,5 +1,7 @@
 package entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,8 +11,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "empleado")
-public class Empleado {
+public class Empleado implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	@Column(name = "codigo")
@@ -124,6 +131,13 @@ public class Empleado {
 
 	public void setCodDepartamento(int codDepartamento) {
 		this.codDepartamento = codDepartamento;
+	}
+
+	@Override
+	public String toString() {
+		return "Empleado [codEmpleado=" + codEmpleado + ", nombre=" + nombre + ", primerApellido=" + primerApellido
+				+ ", segundoApellido=" + segundoApellido + ", lugarNacimiento=" + lugarNacimiento + ", fecha=" + fecha
+				+ ", direccion=" + direccion + ", telefono=" + telefono + ", codDepartamento=" + codDepartamento + "]";
 	}
 	
 	

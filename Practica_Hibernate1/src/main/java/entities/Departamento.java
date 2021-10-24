@@ -1,5 +1,7 @@
 package entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,8 +11,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "departamento")
-public class Departamento {
+public class Departamento implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	@Column(name = "codigo")
@@ -28,6 +35,10 @@ public class Departamento {
 		this.nombre = nombre;
 		this.codResponsable = codResponsable;
 	}
+	public Departamento() {
+		
+	}
+
 
 	public int getCodDepartamento() {
 		return codDepartamento;
@@ -52,6 +63,13 @@ public class Departamento {
 	public void setCodResponsable(int codResponsable) {
 		this.codResponsable = codResponsable;
 	}
+
+	@Override
+	public String toString() {
+		return "Departamento [codDepartamento=" + codDepartamento + ", nombre=" + nombre + ", codResponsable="
+				+ codResponsable + "]";
+	}
+	
 	
 	
 }
