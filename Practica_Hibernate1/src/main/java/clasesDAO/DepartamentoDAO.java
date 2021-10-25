@@ -35,19 +35,20 @@ public class DepartamentoDAO {
 	}
 
 
-	public void update(Departamento ob) {
+	public void update(int ob) {
 		Transaction tx = sesion.beginTransaction();
-		Departamento up = sesion.get(Departamento.class, ob.getCodDepartamento());
-		up = ob;
+		Departamento up = sesion.get(Departamento.class, ob);
+		up.setNombre("Actualizado");
 		sesion.update(up);
 		App.logger.info("Se ha actualizado un departamento");
 		tx.commit();
 	}
 
-	public void delete(Departamento ob) {
+	public void delete(int ob) {
 		Transaction tx = sesion.beginTransaction();
+		Departamento dp = sesion.get(Departamento.class, ob);
+		sesion.remove(dp);
 		App.logger.info("Se ha borrado un departamento");
-		sesion.remove(ob);
 		tx.commit();
 	}
 
