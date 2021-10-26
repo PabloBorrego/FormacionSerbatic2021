@@ -60,6 +60,15 @@ public class Empleado implements Serializable{
 		this.telefono = telefono;
 		this.codDepartamento = codDepartamento;
 	}
+	
+	
+
+	public Empleado() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
 
 	public int getCodEmpleado() {
 		return codEmpleado;
