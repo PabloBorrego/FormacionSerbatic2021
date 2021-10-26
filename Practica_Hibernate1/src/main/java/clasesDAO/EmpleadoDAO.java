@@ -36,20 +36,20 @@ public class EmpleadoDAO {
 	}
 
 
-	public void update(Empleado ob) {
+	public void update(int ob) {
 		Transaction tx = sesion.beginTransaction();
-		Empleado up = sesion.get(Empleado.class, ob.getCodEmpleado());
-		up = ob;
+		Empleado up = sesion.get(Empleado.class, ob);
 		sesion.update(up);
 		App.logger.info("Se ha actualizado un empleado");
 		tx.commit();
 		
 	}
 
-	public void delete(Empleado ob) {
+	public void delete(int ob) {
 		Transaction tx = sesion.beginTransaction();
 		App.logger.info("Se ha borrado un empleado");
-		sesion.remove(ob);
+		Empleado up = sesion.get(Empleado.class, ob);
+		sesion.remove(up);
 		tx.commit();
 		
 	}

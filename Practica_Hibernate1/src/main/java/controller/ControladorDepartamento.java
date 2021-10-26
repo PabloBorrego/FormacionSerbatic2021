@@ -11,10 +11,21 @@ public class ControladorDepartamento {
 	public Vista vista = new Vista();
 	
 	
-	public void accionesDepartameto(){
+	
+	public ControladorDepartamento() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+	public void accionesDepartameto(String tabla){
 		
-		int seleccion = vista.mostrarMenuConSeleccion();
 		
+		int seleccion = 9;
+		
+		do {
+			seleccion = vista.mostrarMenuConSeleccion(tabla);
 		switch (seleccion) {
 		
 		//Create
@@ -33,7 +44,16 @@ public class ControladorDepartamento {
 			case 4: 
 				dDAO.delete(vista.seleccionCodigoBuscarDepartamento());
 				break;
+		//CriteriaQuery buscar emp por cod_Departamento
+			case 5: 
+				Servicios.CriteriaEmpeladoDepartamentos(vista.seleccionCodigoBuscarDepartamento());
+				break;
+			case 0:
+				System.out.println("ADIOS");
+				break;
+				
 		}
+		}while(seleccion  != 0);
 		
 	}
 	

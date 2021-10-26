@@ -25,15 +25,22 @@ public class Servicios {
 		Query<Empleado> query = App.sesion.createQuery(cr);
 		List<Empleado> results = query.getResultList();
 		
-		for(Empleado e : results) {
-			System.err.println(e.toString());
+		if(results.isEmpty()) {
+			System.err.println("No hay empleados con ese codigo");
+			App.logger.warn("No se ha devueto nada a la lista");
+		}else {
+			for(Empleado e : results) {
+				System.err.println(e.toString());
+			}
 		}
+		
+		
 	}
 	
 	
-	public static void consultaHQLEdad(int edad) {
+	public static void consultaHQLEdad(char edad) {
 		
-		String hql = "FROM empleado E WHERE E.edad > "+edad;
+		String hql = "FROM empleado E WHERE E.edad >= "+edad;
 		Query<Empleado> query = App.sesion.createQuery(hql);
 		List<Empleado> results = query.list();
 		

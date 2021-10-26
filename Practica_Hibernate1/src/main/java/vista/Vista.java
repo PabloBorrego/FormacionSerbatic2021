@@ -8,13 +8,37 @@ import entities.Empleado;
 public class Vista {
 	Scanner sc = new Scanner(System.in);
 	
-	public int mostrarMenuConSeleccion() {
+	
+	public String menuTabla(){
 		
 		
+		String tEmp = "EMPLEADOS";
+		String tDep = "DEPARTAMENTOS";
+		int selec = 0;
+		System.out.println("Introduce sobre que tabla quieres hacer operaciones:");
+		System.out.println("1-Empleados");
+		System.out.println("2-Departamentos");
+		
+		selec = sc.nextInt();
+		
+		if(selec == 1) {
+			return tEmp;
+		}else {
+			if(selec == 2)
+				return tDep;
+		}
+		
+		return null;
+	}
+	
+	public int mostrarMenuConSeleccion(String tabla) {
+		
+		System.out.println("**-"+tabla+"-**");
 		System.out.println("1-Create");
 		System.out.println("2-Read");
 		System.out.println("3-Update");
 		System.out.println("4-Delete");
+		System.out.println("0-Salir");
 		int seleccion = sc.nextInt();
 		return seleccion;
 		
@@ -36,12 +60,10 @@ public class Vista {
 	}
 	
 	public int seleccionCodigoBuscarEmpleado() {
-		
 		System.out.println("Codigo de Empleado:");
 		int codigo = sc.nextInt();
 		return codigo;
-		
-		
+	
 	}
 	
 	public int seleccionCodigoBuscarDepartamento() {
@@ -50,6 +72,8 @@ public class Vista {
 		return codigo;
 		
 	}
+	
+	
 	
 	
 	

@@ -8,6 +8,8 @@ import org.hibernate.SessionFactory;
 import Factoria.HibernateFactory;
 import clasesDAO.DepartamentoDAO;
 import clasesDAO.EmpleadoDAO;
+import controller.ControlMenu;
+import controller.ControladorDepartamento;
 import entities.Departamento;
 import entities.Empleado;
 import services.Servicios;
@@ -24,10 +26,9 @@ public class App
    
 	public static void main( String[] args ) throws InterruptedException
     {
-	
-        Servicios.CriteriaEmpeladoDepartamentos(3);
-        
 		
+		ControlMenu cM = new ControlMenu();
+		cM.elegirControl();
 		
     }
 }
