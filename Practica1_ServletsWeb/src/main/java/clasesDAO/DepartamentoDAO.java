@@ -1,15 +1,19 @@
 package clasesDAO;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import Hibernate_Practicas.Practica_Hibernate1.App;
 import entities.Departamento;
+import entities.Empleado;
 
 
 public class DepartamentoDAO {
@@ -41,12 +45,16 @@ public class DepartamentoDAO {
 	
 	public ArrayList<Departamento> readAll() {
 		
-		ArrayList<Departamento> departamentos = new ArrayList<>();
-		CriteriaBuilder builder = App.sesion.getCriteriaBuilder();
-	    CriteriaQuery<Departamento> criteria = builder.createQuery(Departamento.class);
-	    departamentos = (ArrayList<Departamento>) App.sesion.createQuery(criteria).getResultList();
-		return departamentos;
+		CriteriaBuilder cb = App.sesion.getCriteriaBuilder();
+		CriteriaQuery<Departamento> cr = cb.createQuery(Departamento.class);
+		Root<Departamento> root = cr.from(Departamento.class);
 		
+		cr.multiselect(root);
+		
+		Query<Departamento> query = App.sesion.createQuery(cr);
+		ArrayList<Departamento> results = (ArrayList<Departamento>)query.getResultList();
+		
+		return results;
 	}
 
 

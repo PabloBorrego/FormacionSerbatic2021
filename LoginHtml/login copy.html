@@ -5,14 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+
+    <script type="text/javascript">
+
+        function valBasica(){
+            var usuario = document.getElementById('usuario');
+            var password = document.getElementById('password');
+            var resultado = document.getElementById('resultadoVal')
+
+            if(usuario.value === "USER" && password.value === "PW" )
+                    resultado.innerHTML = "VALIDACION CORRECTA"
+            else
+                resultado.innerHTML = "VALIDACION INCORRECTA"
+        }
+    </script>
+
+
 </head>
 <body>
-    <form>
+    <form action="">
         <div class = "container">
+
+            
+
+
             <label for="usuario">Username</label>
-            <input type = "text" placeholder=" nombre de usuario">
-            <label for="password">Username</label>
-            <input type = "text" placeholder=" nombre de usuario">
+            <input type = "text" id ="usuario"  placeholder=" nombre de usuario">
+            <label for="password">Password</label>
+            <input type = "text"  id ="password" placeholder=" nombre de usuario">
+            <input type="button" id= "botonConf"  onclick="valBasica()"  placeholder="CONFIRMAR">     
+
+            <p><div id = "resultadoVal" /></p>
+            
+
         </div>
     
     </form>
