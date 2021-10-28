@@ -12,11 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Hibernate_Practicas.Practica_Hibernate1.App;
-import clasesDAO.DepartamentoDAO;
-import clasesDAO.EmpleadoDAO;
 import entities.Empleado;
-import entities.Empleado;
-import jdbc.DepartamentosJDBC;
 import jdbc.EmpleadosJDBC;
 
 /**
@@ -43,7 +39,10 @@ public class MostrarEmpleados extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
+		
+		
 		PrintWriter pw = response.getWriter();
+		
 		try {
 			lEmp = EmpleadosJDBC.recuperaEmp();
 		} catch (SQLException e) {
@@ -90,7 +89,7 @@ public class MostrarEmpleados extends HttpServlet {
 		pw.println("</html>");
 		pw.close();
 		}else {
-			App.logger.info("La lista de departamentos está vacía");
+			App.logger.info("La lista de empleados está vacía");
 		}
 	}
 
