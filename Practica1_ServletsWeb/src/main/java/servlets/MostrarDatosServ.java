@@ -36,12 +36,12 @@ public class MostrarDatosServ extends HttpServlet {
 		String param = request.getParameter("table");
 		
 			if(param.equals("departamento")) {
-				request.getRequestDispatcher("MostrarDepartamentos").forward(request, response);
+				request.getRequestDispatcher("/MostrarDepartamentos").forward(request, response);
 				App.logger.info("Se selecciono mostrar departamentos");
 			
 			}else
 				if(param.equals("empleado")){
-				request.getRequestDispatcher("MostrarEmpelados").forward(request, response);
+				request.getRequestDispatcher("/MostrarEmpleados").forward(request, response);
 				App.logger.info("Se selecciono mostrar empleados");
 			}
 		
