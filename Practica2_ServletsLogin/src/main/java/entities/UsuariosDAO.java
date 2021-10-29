@@ -8,7 +8,7 @@ import Hibernate_Practicas.Practica_Hibernate1.App;
 
 public class UsuariosDAO {
 	
-	public Session sesion;
+	public  Session sesion;
 
 	public UsuariosDAO(Session sesion) {
 		super();
@@ -16,7 +16,7 @@ public class UsuariosDAO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Usuarios read(int cod) {
+	public  Usuarios read(int cod) {
 		
 		Transaction tx = sesion.beginTransaction();
 		Usuarios e = sesion.get(Usuarios.class,cod);

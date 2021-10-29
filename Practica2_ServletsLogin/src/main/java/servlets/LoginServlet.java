@@ -1,8 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,18 +8,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Hibernate_Practicas.Practica_Hibernate1.App;
+import entities.Usuarios;
+import entities.UsuariosDAO;
 
 /**
- * Servlet implementation class MostrarDatosServ
+ * Servlet implementation class LoginServlet
  */
-@WebServlet("/MostrarDatos")
-public class MostrarDatosServ extends HttpServlet {
+@WebServlet("/Login")
+public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	UsuariosDAO usDAO = new UsuariosDAO(App.sesion);
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MostrarDatosServ() {
+    public LoginServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,19 +32,22 @@ public class MostrarDatosServ extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+		response.setContentType("text/html");
+		
+		String param = request.getParameter("usuario");
+		String param2 = request.getParameter("password");
+		
+		Usuarios us = usDAO.read(1);
+		
+		if(param.equals(us.getNombre())&&param2.equals(us.getClave())) {
+			response.sendRedirect("incioCorrecto.html");
+		}else {
+			response.sendRedirect("indexFormulario.html");
+		}
 		
 		
-		String param = request.getParameter("table");
-		
-			if(param.equals("departamento")) {
-				request.getRequestDispatcher("/MostrarDepartamentos").forward(request, response);
-				App.logger.info("Se selecciono mostrar departamentos");
-			
-			}else
-				if(param.equals("empleado")){
-				request.getRequestDispatcher("/MostrarEmpleados").forward(request, response);
-				App.logger.info("Se selecciono mostrar empleados");
-			}
 		
 	}
 
