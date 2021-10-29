@@ -26,7 +26,6 @@ public class EmpleadosJDBC {
 
 
 	public static ArrayList<Empleado> recuperaEmp() throws SQLException{
-		
 		ArrayList<Empleado> listEmp = new ArrayList<>();
 		
 		Statement q = c.createStatement();
